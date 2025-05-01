@@ -1,0 +1,33 @@
+function DoctorsInformation() {
+  return (
+    <div className="w-full p-4 grid grid-cols-5 border-gray-200  lg:grid-cols-6 border-b lg:border rounded-md lg:my-4 hover:shadow-md">
+      <div className="col-span-1">
+        <img
+          src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+          alt="Movie"
+          className="w-[80px] h-[80px] "
+        />
+      </div>
+      <div className="col-span-3">
+        <h3 className="text-lg font-semibold">Dr. John Doe</h3>
+        <p className="text-sm text-gray-500 whitespace-nowrap overflow-hidden overflow-ellipsis">
+          Internal Medicine Specialists
+        </p>
+        <p className="text-sm font-semibold text-[#6b45c6] whitespace-nowrap overflow-hidden overflow-ellipsis">
+          10 YEARS MBBS, MD(INTERNAL MEDICINE)
+        </p>
+        <p className="text-sm text-gray-500 whitespace-nowrap overflow-hidden overflow-ellipsis">
+          Apollo 24|7 virtual clinic - Telangana Hydrabad
+        </p>
+      </div>
+      <div className="col-span-full lg:col-span-2 pt-4">
+        <p className="text-center text-xl font-semibold pb-2">$499</p>
+        <button className="btn btn-outline btn-primary w-full rounded-md">
+          Consult Online
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default DoctorsInformation;
