@@ -1,4 +1,4 @@
-function DoctorsInformation() {
+function DoctorsInformation({ doctor }) {
   return (
     <div className="w-full p-4 grid grid-cols-5 border-gray-200  lg:grid-cols-6 border-b lg:border rounded-md lg:my-4 hover:shadow-md">
       <div className="col-span-1">
@@ -9,22 +9,36 @@ function DoctorsInformation() {
         />
       </div>
       <div className="col-span-3">
-        <h3 className="text-lg font-semibold">Dr. John Doe</h3>
+        <h3 className="text-lg font-semibold">{doctor.name}</h3>
         <p className="text-sm text-gray-500 whitespace-nowrap overflow-hidden overflow-ellipsis">
-          Internal Medicine Specialists
+          {doctor.specialization}
         </p>
         <p className="text-sm font-semibold text-[#6b45c6] whitespace-nowrap overflow-hidden overflow-ellipsis">
-          10 YEARS MBBS, MD(INTERNAL MEDICINE)
+          {doctor.experience} YEARS {doctor.qualifications.toUpperCase()}
         </p>
         <p className="text-sm text-gray-500 whitespace-nowrap overflow-hidden overflow-ellipsis">
-          Apollo 24|7 virtual clinic - Telangana Hydrabad
+          Apollo 24|7 virtual clinic - {doctor.availabilityLocation?.online}
         </p>
       </div>
-      <div className="col-span-full lg:col-span-2 pt-4">
-        <p className="text-center text-xl font-semibold pb-2">$499</p>
-        <button className="btn btn-outline btn-primary w-full rounded-md">
-          Consult Online
-        </button>
+      <div className="col-span-full lg:col-span-2 pt-4 flex">
+        <div className={doctor.fees.offline > 0 ? "w-1/2" : "w-full"}>
+          <p className="text-center text-xl font-semibold pb-2">
+            ₹{doctor.fees.online}
+          </p>
+          <button className="btn btn-outline btn-primary w-full rounded-md">
+            Consult Online
+          </button>
+        </div>
+        {doctor.fees.offline > 0 && (
+          <div className="w-1/2 ps-2">
+            <p className="text-center text-xl font-semibold pb-2">
+              ₹{doctor.fees.offline}
+            </p>
+            <button className="btn bg-[#106c89] text-white w-full rounded-md">
+              Consult Offline
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

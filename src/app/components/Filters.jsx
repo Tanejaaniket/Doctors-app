@@ -5,7 +5,7 @@ function Filters() {
       <div>
         <div className="flex justify-between items-center p-4 border-b-1 border-gray-200">
           <h1 className="font-bold">Filters</h1>
-          <button className="text-[#106c89] font-bold">Clear All</button>
+          <button className="text-[#106c89] font-bold cursor-pointer">Clear All</button>
         </div>
         <div className="py-4">
           <div className="w-full px-2">
