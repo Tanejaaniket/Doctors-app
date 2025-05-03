@@ -1,7 +1,9 @@
 import Doctor from "@/models/doctor.model";
+import { upload, uploadFile } from "@/utils/fileHandling";
 import { NextResponse } from "next/server";
 
 const { connectDB } = require("@/db/db");
+
 
 connectDB();
 
@@ -11,7 +13,7 @@ export async function GET(req) {
 
     const page = searchParams.get("page") || 1;
     const limit = searchParams.get("limit") || 10;
-    const modeOfConsult = searchParams.getAll("modeOfConsult");
+    const modeOfConsult = searchParams.getAll("mode-of-consult");
     const experience = searchParams.getAll("experience");
     const fees = searchParams.getAll("fees");
     const language = searchParams.getAll("language");
@@ -20,11 +22,11 @@ export async function GET(req) {
 
     if (modeOfConsult.length) {
       const consultationMode = [];
-      if (modeOfConsult.includes("Online")) {
+      if (modeOfConsult.includes("online-consult")) {
         consultationMode.push("online");
       }
-      if (modeOfConsult.includes("Offline")) consultationMode.push("offline");
-      if (modeOfConsult.includes("Offline") && modeOfConsult.includes("Online"))
+      if (modeOfConsult.includes("hospital-visit")) consultationMode.push("offline");
+      if (modeOfConsult.includes("hospital-visit") && modeOfConsult.includes("online-consult"))
         consultationMode.push("both");
       filters.$and.push({ availability: { $in: consultationMode } });
     }
